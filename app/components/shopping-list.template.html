@@ -1,18 +1,26 @@
-<div ng-controller="myCtrl">
-        <div ng-repeat="product in products" ng-init="disabled($index)">
-                <p>Name: {{product.name}}</p>
-                <p>Price: {{product.price}}</p>
-                <button ng-click="add($index)">+</button>
-                <button ng-click="remove($index); disabled($index)" ng-disabled="">-</button>
+<div>
+        <div ng-repeat="record in vm.products" >
+                <p>Name: {{record.name}}</p>
+                <p>Price: {{record.price}}</p>
+                <button ng-click="vm.add(record)">+</button>
         </div>
-                                    
-    </div>
-    
-    <div>
-        <p>There are {{sumMessage()}} products in your cart, on value {{cart.sum}}</p>
-    </div>
-    
-    <div>
-        <p></p>
-    </div>
+          
+        <div style="border: 1px solid">
+            <h5>There are {{vm.sumMessage()}} products in your cart, on value {{vm.cart.sum}}</h5>
+
+            <div ng-repeat="record in vm.cart.cartProducts track by $index">
+                <p>{{record.name}}</p>
+                <p>{{record.price}}</p>
+                <button ng-click="vm.remove(record)">-</button>
+            </div>
+        
+        
+
+
+
+
+        </div>
+
+
+
 </div>

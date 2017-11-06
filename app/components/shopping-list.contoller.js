@@ -11,7 +11,8 @@
            
         function myCtrl($scope) {
 
-            $scope.products = [
+            var self = this
+            this.products = [
                 {name: "iphone", price: 1000},
                 {name: "samsung", price: 900},
                 {name: "motorola", price: 750},
@@ -19,37 +20,32 @@
                 {name: "LG", price: 670},
 
             ]
-            $scope.cart= {
+            this.cart= {
                 sum: 0,
                 cartProducts: []
             };
 
-            $scope.sumMessage = function () {
-                if ($scope.cart.cartProducts.length) { return $scope.cart.cartProducts.length}
+            this.sumMessage = function () {
+                if (self.cart.cartProducts.length) { return self.cart.cartProducts.length}
                 else {return "no"};
-                console.log($scope.cartProducts)
             }
         
             
-            $scope.disabled = function (el) {
-                if ($scope.cart.cartProducts.findIndex((element)=> element === $scope.products[el]) < 0) {
-                    return true}
-                else {return false}
+
+            this.add = function(record) {
+                self.cart.sum = self.cart.sum + record.price;
+                self.cart.cartProducts.push(record);
             }
 
 
-
-
-            $scope.add = function(i) {
-                $scope.cart.sum = $scope.cart.sum + $scope.products[i].price;
-                $scope.cart.cartProducts.push($scope.products[i]);
+            this.remove = function(record) {
+                self.cart.sum = self.cart.sum - record.price;
+                
+                self.cart.cartProducts.splice(record, 1)
             }
 
+            this.clearCart = function() {
 
-            $scope.remove = function(i) {
-                $scope.cart.sum = $scope.cart.sum - $scope.products[i].price;
-                var ind = $scope.cart.cartProducts.findIndex((element)=> element === $scope.products[i]);
-                $scope.cart.cartProducts.splice(ind, 1)
             }
             
         }
