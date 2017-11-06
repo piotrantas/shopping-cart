@@ -1,0 +1,18 @@
+<div ng-controller="myCtrl">
+        <div ng-repeat="product in products" ng-init="disabled($index)">
+                <p>Name: {{product.name}}</p>
+                <p>Price: {{product.price}}</p>
+                <button ng-click="add($index)">+</button>
+                <button ng-click="remove($index); disabled($index)" ng-disabled="">-</button>
+        </div>
+                                    
+    </div>
+    
+    <div>
+        <p>There are {{sumMessage()}} products in your cart, on value {{cart.sum}}</p>
+    </div>
+    
+    <div>
+        <p></p>
+    </div>
+</div>
