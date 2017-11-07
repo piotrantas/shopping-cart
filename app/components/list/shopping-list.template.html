@@ -1,0 +1,9 @@
+<div>
+        
+        <div style="display: inline-block; width:150px; border: 1px solid blue" ng-repeat="record in vm.products" >
+                <p>Name: {{record.name}}</p>
+                <p>Price: {{record.price}}</p>
+                <button ng-click="vm.add(record)">+</button>
+        </div>
+          
+</div>
